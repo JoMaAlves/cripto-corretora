@@ -48,7 +48,6 @@ val componentTestTask = tasks.create("componentTest", Test::class) {
     useJUnitPlatform()
 }
 
-//Nao sei se precisa
 tasks.withType<Test> {
     useJUnitPlatform()
 }
@@ -63,10 +62,9 @@ tasks.withType<JacocoReport> {
         classDirectories.setFrom(files(classDirectories.files.map {
             fileTree(it).apply {
                 exclude(
-                    "com/school/services/university/application/universityEntryPoint.class",
-                    "com/school/services/university/application/Main.class",
-                    "com/school/services/university/application/modules/**",
-                    "com/school/services/university/domain/validations/Constants.class"
+                    "school/cesar/criptocorretora/entidades/**",
+                    "school/cesar/criptocorretora/excecoes/**",
+                    "school/cesar/criptocorretora/services/CompraService.kt"
                 )
             }
         }))
@@ -81,7 +79,7 @@ tasks.withType<JacocoCoverageVerification> {
                 counter = "LINE"
             }
             limit {
-                minimum = "0.75".toBigDecimal()
+                minimum = "0.85".toBigDecimal()
                 counter = "BRANCH"
             }
         }
