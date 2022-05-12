@@ -26,7 +26,7 @@ internal class CarteiraServiceTest {
     private val carteiraService = CarteiraService(usuarioServiceMock, criptoServiceMock)
 
     @Test
-    fun `deve comprar uma cripto inesistente na carteira`() {
+    fun `deve comprar uma cripto inexistente na carteira`() {
         every { usuarioServiceMock.buscarPorId(123) } returns usuario
         every { criptoServiceMock.buscarPorId(123) } returns cripto
 
@@ -36,7 +36,7 @@ internal class CarteiraServiceTest {
     }
 
     @Test
-    fun `deve comprar uma cripto existente na carteira`() {
+    fun `deve comprar uma cripto ja existente na carteira`() {
         every { usuarioServiceMock.buscarPorId(123) } returns usuario
         every { criptoServiceMock.buscarPorId(123) } returns cripto
 
