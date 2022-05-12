@@ -24,6 +24,12 @@ class UsuarioRepositoryTest {
     }
 
     @Test
+    fun `deve trazer null quando usuario for inexistente e o repositorio populado`(){
+        usuarioRepository.add(usuario)
+        assertEquals(null, usuarioRepository.buscarPorId(123))
+    }
+
+    @Test
     fun `deve adicionar e trazer usuario`(){
         usuarioRepository.add(usuario)
         assertEquals(usuario, usuarioRepository.buscarPorId(123123123))
