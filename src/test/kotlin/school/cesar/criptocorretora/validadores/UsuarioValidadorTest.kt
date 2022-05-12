@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
+import school.cesar.criptocorretora.entidades.Carteira
 import school.cesar.criptocorretora.entidades.Usuario
 import school.cesar.criptocorretora.excecoes.UsuarioInvalidoException
 import school.cesar.criptocorretora.util.CPFUtil
@@ -13,7 +14,14 @@ import school.cesar.criptocorretora.util.SenhaUtil
 class UsuarioValidadorTest {
 
     private val usuarioValidador = UsuarioValidator(CPFUtil(), EmailUtil(), SenhaUtil())
-    private val usuario = Usuario(123123123, "17154989092", "John Doe", "johndoe@test.com", "Abcd12345", ArrayList())
+    private val usuario = Usuario(
+        123123123,
+        "17154989092",
+        "John Doe",
+        "johndoe@test.com",
+        "Abcd12345",
+        Carteira()
+    )
 
     @Test
     fun `deve lancar excecao quando o nome for vazio`() {
@@ -25,7 +33,7 @@ class UsuarioValidadorTest {
     }
 
     @Test
-    fun `deve lancar excecao  o cpf for vazio`() {
+    fun `deve lancar excecao quando o cpf for vazio`() {
         assertThrows<UsuarioInvalidoException> {
             usuarioValidador.valida(usuario.copy(cpf = ""))
         }.also {
