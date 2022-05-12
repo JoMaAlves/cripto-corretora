@@ -27,12 +27,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.10")
 
-    //json
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.2")
-
-    testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
-    testImplementation("io.mockk:mockk:1.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("io.mockk:mockk:1.12.3")
 
     componentTestImplementation(sourceSets["test"].output)
     componentTestImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
@@ -89,10 +85,9 @@ tasks.withType<JacocoCoverageVerification> {
         classDirectories.setFrom(files(classDirectories.files.map {
             fileTree(it).apply {
                 exclude(
-                    "com/school/services/university/application/universityEntryPoint.class",
-                    "com/school/services/university/application/Main.class",
-                    "com/school/services/university/application/modules/**",
-                    "com/school/services/university/domain/validations/Constants.class"
+                    "school/cesar/criptocorretora/entidades/**",
+                    "school/cesar/criptocorretora/excecoes/**",
+                    "school/cesar/criptocorretora/services/CompraService.kt"
                 )
             }
         }))
